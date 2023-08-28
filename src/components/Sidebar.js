@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import Upload from './Upload';
 
 const Sidebar = () => {
-    const [selectedButton, setSelectedButton] = useState(1);
+    const [selectedButton, setSelectedButton] = useState("panoramas");
 
     const handleButtonClick = (buttonNumber) => {
         setSelectedButton(buttonNumber);
     };
+
 
     return (
         <div className="top-0 over bottom-0 lg:left-0 p-2 w-[300px] text-center bg-gray-900 overflow-hidden">
@@ -15,7 +16,7 @@ const Sidebar = () => {
                 <div className="flex space-x-4 justify-center">
                     <button
                         style={{
-                            backgroundColor: selectedButton === 1 ? '#007bff' : '#333',
+                            backgroundColor: selectedButton === "panoramas" ? '#007bff' : '#333',
                             color: '#fff',
                             fontWeight: 'bold',
                             padding: '10px 20px',
@@ -24,13 +25,13 @@ const Sidebar = () => {
                             cursor: 'pointer',
                             transition: 'background-color 0.3s, color 0.3s',
                         }}
-                        onClick={() => handleButtonClick(1)}
+                        onClick={() => handleButtonClick("panoramas")}
                     >
                         Paranoma
                     </button>
                     <button
                         style={{
-                            backgroundColor: selectedButton === 2 ? '#007bff' : '#333',
+                            backgroundColor: selectedButton === "2d" ? '#007bff' : '#333',
                             color: '#fff',
                             fontWeight: 'bold',
                             padding: '10px 20px',
@@ -39,13 +40,15 @@ const Sidebar = () => {
                             cursor: 'pointer',
                             transition: 'background-color 0.3s, color 0.3s',
                         }}
-                        onClick={() => handleButtonClick(2)}
+                        onClick={() => handleButtonClick("2d")}
                     >
                         2D Image
                     </button>
                 </div>
                 <br />
-                <Upload />
+                <Upload
+                    data={selectedButton}
+                />
             </div>
         </div>
     )
